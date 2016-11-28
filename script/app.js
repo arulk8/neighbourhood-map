@@ -1,5 +1,5 @@
-var map;
-var locations = [
+
+var initiallocations = [
            {
             title: 'Madras High Court', 
             location: {
@@ -37,17 +37,9 @@ var locations = [
            lng:80.277357 }
           }
 ];
-function initMap() {
+var map;
 
 
-   map = new google.maps.Map(document.getElementById('map'), {
-   center:{lat: 13.083741, lng: 80.282537} ,
-   zoom: 15
-
-  });
- }
-
-  
 
 var viewModel =function() { 
 
@@ -56,7 +48,7 @@ var viewModel =function() {
 
  self.markers=[];
 
- self.Locations =ko.observableArray(locations);
+ self.Locations =ko.observableArray(initiallocations);
 
  self.Locations().forEach(function(loc){
 
@@ -74,6 +66,15 @@ var viewModel =function() {
 
     };
 
- ko.applyBindings(new viewModel());
+ 
 
-  
+  function initMap() {
+
+
+   map = new google.maps.Map(document.getElementById('map'), {
+   center:{lat: 13.083741, lng: 80.282537} ,
+   zoom: 15
+
+  });
+   ko.applyBindings(new viewModel());
+ }
