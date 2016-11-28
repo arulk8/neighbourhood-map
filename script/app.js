@@ -1,40 +1,40 @@
 var map;
 var locations = [
-          {
+           {
             title: 'Madras High Court', 
             location: {
-              lat: 13.087191,
-               lng: 80.286434 }
+            lat: 13.087191,
+            lng: 80.286434 }
              },
-          {
+            {
             title: 'Indian Institute Of Logistics', 
             location: {
-              lat: 13.085971,
-               lng: 80.284127 }
+            lat: 13.085971,
+            lng: 80.284127 }
              },
-          {
+            {
             title: 'Reserve Bank of India',
-             location: {
-              lat: 13.084453,
-               lng: 80.288579 }
+            location: {
+            lat: 13.084453,
+            lng: 80.288579 }
              },
-          {
+            {
             title: 'TNPSC', 
             location: {
-              lat: 13.085247, 
-              lng: 80.282035 }
+            lat: 13.085247, 
+            lng: 80.282035 }
             },
-	      {
-          title: 'TAMIL NADU GOVERNMENT DENTAL COLLEGE',
+	       {
+           title: 'TAMIL NADU GOVERNMENT DENTAL COLLEGE',
            location: {
-            lat: 13.084975,
-             lng: 80.282604}
+           lat: 13.084975,
+           lng: 80.282604}
            },         
-	      {
+	       {
           title: 'Southern Railway Divisional Office',
            location: {
-            lat:13.08254 , 
-            lng:80.277357 }
+           lat:13.08254 , 
+           lng:80.277357 }
           }
 ];
 function initMap() {
@@ -49,8 +49,9 @@ function initMap() {
 
   
 
-var viewModel =function()    
-{ "use strict";
+var viewModel =function() { 
+
+"use strict";
  var self = this;
 
  self.markers=[];
@@ -61,10 +62,11 @@ var viewModel =function()
 
   var marker = new google.maps.Marker({
     position :loc.location,
-    title:loc.title,
+    title :loc.title,
     map :map,
     animation: google.maps.Animation.Drop
   });
+
    loc.marker =marker;
    self.markers.push(marker);
 });
@@ -72,6 +74,6 @@ var viewModel =function()
 
     };
 
-    ko.applyBindings(new viewModel());
+ 
 
   
