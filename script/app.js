@@ -39,23 +39,14 @@ var initiallocations = [
 ];
 var map;
 
-function initMap() {
 
-
-   map = new google.maps.Map(document.getElementById('map'), {
-   center:{lat: 13.083741, lng: 80.282537} ,
-   zoom: 15
-
-  });
-   ko.applyBindings(new viewModel());
- }
-
+ 
 
 var viewModel =function() { 
 
 "use strict";
  var self = this;
-
+ var infowindow = new google.maps.InfoWindow();
  self.markers=[];
 
  self.Locations =ko.observableArray(initiallocations);
@@ -71,11 +62,34 @@ var viewModel =function() {
 
    loc.marker =marker;
    self.markers.push(marker);
+
+ marker.addListener('click', function() {
+            populateInfoWindow(loc.marker, infowindow);
+          });
 });
-
-
-    };
+ function populateInfoWindow(marker, infowindow) {
+        // Check to make sure the infowindow is not already opened on this marker.
+        if (infowindow.marker != marker) {
+          infowindow.marker = marker;
+          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.open(map, marker);
+          // Make sure the marker property is cleared if the infowindow is closed.
+          infowindow.addListener('closeclick',function(){
+            infowindow.setMarker(null);
+          });
+        }
+      }
+  };
 
  
 
-  
+  function initMap() {
+
+
+   map = new google.maps.Map(document.getElementById('map'), {
+   center:{lat: 13.083741, lng: 80.282537} ,
+   zoom: 15
+
+  });
+   ko.applyBindings(new viewModel());
+ }
