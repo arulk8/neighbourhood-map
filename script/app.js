@@ -39,6 +39,16 @@ var initiallocations = [
 ];
 var map;
 
+function initMap() {
+
+
+   map = new google.maps.Map(document.getElementById('map'), {
+   center:{lat: 13.083741, lng: 80.282537} ,
+   zoom: 15
+
+  });
+   ko.applyBindings(new viewModel());
+ }
 
 
 var viewModel =function() { 
@@ -68,13 +78,4 @@ var viewModel =function() {
 
  
 
-  function initMap() {
-
-
-   map = new google.maps.Map(document.getElementById('map'), {
-   center:{lat: 13.083741, lng: 80.282537} ,
-   zoom: 15
-
-  });
-   ko.applyBindings(new viewModel());
- }
+  
