@@ -49,7 +49,7 @@ var initiallocations = [{
     }
 }];
 var map;
-
+var previousinfowindow;
 var viewModel = function () {
     "use strict";
     var self = this;
@@ -87,21 +87,21 @@ var viewModel = function () {
                 var imgsrc = prefix + '100x150' + suffix;
                 var contentString = '<h4>' + name + '<h4>' + '<p>' + addr + '<p>' + '<h4><a href="' + url + '">Website<a><h4>' + '<img src="' + imgsrc + '"/>';
                 var infowindow = new google.maps.InfoWindow({
-                    content: contentString
+                    content: contentString,
+                    maxWidth:100
                 });
                 loc.infowindow=infowindow;
+                
 
                 loc.marker.addListener('click', function () {
-                    if (loc.infowindow)
+                    if(previousinfowindow !== undefined)
                     {
-                        loc.infowindow.close();
+                        previousinfowindow.close();
                     }
-                     
-                    loc.infowindow.open(map, loc.marker);
-                
-                    
+                     previousinfowindow=loc.infowindow;
+                     console.log(previousinfowindow);
+                     loc.infowindow.open(map, loc.marker);
                    
-
 
                 });
             }
