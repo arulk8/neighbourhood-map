@@ -1,40 +1,60 @@
 
 var initiallocations = [
            {
-            title: 'Madras High Court', 
+            title: 'Coffee Central',
+            id: '4d04ab309d33a1435992bc78',
             location: {
-            lat: 13.087191,
-            lng: 80.286434 }
+            lat: 13.0471675,
+            lng: 80.1752437 }
              },
             {
-            title: 'Indian Institute Of Logistics', 
+            title: 'The Brew Room', 
+            id: '548861de498e71cde07c9189',
             location: {
-            lat: 13.085971,
-            lng: 80.284127 }
+            lat: 13.045515, 
+            lng: 80.261054
+                  }
              },
             {
-            title: 'Reserve Bank of India',
+            title: 'Cafe Coffee Day',
+            id: '4be565577e2a76b06fc91c9b',
             location: {
-            lat: 13.084453,
-            lng: 80.288579 }
+            lat: 13.068443, 
+            lng: 80.256960
+             }
              },
             {
-            title: 'TNPSC', 
+            title: 'Starbucks', 
+            id: '55f99e33498e4ddd66a2210e',
             location: {
-            lat: 13.085247, 
-            lng: 80.282035 }
+            lat: 13.029288, 
+            lng: 80.248454 
+             }
             },
 	       {
-           title: 'TAMIL NADU GOVERNMENT DENTAL COLLEGE',
+           title: 'Crisp Cafe',
+           id: '541447de498e60ee78c88c44',
            location: {
-           lat: 13.084975,
-           lng: 80.282604}
+           lat: 13.064889, 
+           lng: 80.239045
+           }
            },         
 	       {
-          title: 'Southern Railway Divisional Office',
+          title: 'Costa Coffee',
+          id: '514bd3e9e4b00821ff670cae',
            location: {
-           lat:13.08254 , 
-           lng:80.277357 }
+           lat: 13.069393,
+           lng: 80.238123
+            }
+          },
+          {
+          title: 'Lloyds Tea House',
+          id: '516fe170e4b0c56ebcb78cda',
+           location: {
+           lat: 13.050531,
+           lng: 80.255894
+           
+            }
           }
 ];
 var map;
@@ -87,8 +107,8 @@ var viewModel =function() {
 
 
    map = new google.maps.Map(document.getElementById('map'), {
-   center:{lat: 13.083741, lng: 80.282537} ,
-   zoom: 15
+   center:{lat: 13.057407,lng: 80.235583} ,
+   zoom: 12
 
   });
    ko.applyBindings(new viewModel());
