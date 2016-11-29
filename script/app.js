@@ -66,6 +66,10 @@ var viewModel =function() {
 
 "use strict";
  var self = this;
+ var  CLIENT_ID='GFKCMKYBQ0UDTMIDE2HGMK2ENN5KWSPTMTF3XV3JHP1M0YJV';
+ var  CLIENT_SECRET='10IJSVJFIDQYP0YAGHACE245UBT5AMWSXFZK3B0VSOX4FBCN';
+ 
+ var name;
  var infowindow = new google.maps.InfoWindow();
  self.markers=[];
 
@@ -79,23 +83,55 @@ var viewModel =function() {
     map :map,
     animation: google.maps.Animation.Drop
   });
+var url ='https://api.foursquare.com/v2/venues/'+loc.id+'?client_id='+CLIENT_ID+'&client_secret='+CLIENT_SECRET+'&v=20161129&m=foursquare'
 
+
+$.ajax({
+  method:'GET',
+  url:url,
+  dataType:'jsonp',
+  success: function(data){
+     var resp = data.response.venue;
+     var name =resp.name;
+     var url =resp.shortUrl;
+     var addr;
+     if(resp.location.address === undefined)
+     {
+     addr ="Sorry! The Address is Unavailable";
+     }
+     else
+     {
+     var addr =resp.location.address;
+    }
+   var suffix =resp.bestPhoto.suffix;
+   var prefix =resp.bestPhoto.prefix;
+   var imgsrc = prefix+'100x150'+suffix;
+     console.log(imgsrc);
+     var contents =
+   }
+   
+});
    loc.marker =marker;
    self.markers.push(marker);
 
- marker.addListener('click', function() {
-            populateInfoWindow(loc.marker, infowindow);
+ 
+
+
+marker.addListener('click', function() {
+            populateInfoWindow(loc.marker,infowindow);
           });
+
+
 });
  function populateInfoWindow(marker, infowindow) {
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + marker.title + '</div>');
+          infowindow.setContent('<div>' + location.title + '</div>');
           infowindow.open(map, marker);
           // Make sure the marker property is cleared if the infowindow is closed.
-          infowindow.addListener('closeclick',function(){
-            infowindow.setMarker(null);
+         infowindow.addListener('closeclick',function(){
+           infowindow.setMarker(null);
           });
         }
       }
