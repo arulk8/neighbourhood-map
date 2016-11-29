@@ -68,7 +68,7 @@ var viewModel =function() {
  var self = this;
  var  CLIENT_ID='GFKCMKYBQ0UDTMIDE2HGMK2ENN5KWSPTMTF3XV3JHP1M0YJV';
  var  CLIENT_SECRET='10IJSVJFIDQYP0YAGHACE245UBT5AMWSXFZK3B0VSOX4FBCN';
- 
+ var contentString;
  var name;
  var infowindow = new google.maps.InfoWindow();
  self.markers=[];
@@ -106,19 +106,19 @@ $.ajax({
    var suffix =resp.bestPhoto.suffix;
    var prefix =resp.bestPhoto.prefix;
    var imgsrc = prefix+'100x150'+suffix;
-     console.log(imgsrc);
-     var contents =
+     contentString ='<h3>'+name+'<h3>'+'<h3>'+addr+'<h3>'+'<h3><a href="'+url+'">Website<a><h3>'+'<img src="'+imgsrc+'"/>';
    }
    
 });
    loc.marker =marker;
+   loc.infowindow=infowindow;
    self.markers.push(marker);
 
  
 
 
 marker.addListener('click', function() {
-            populateInfoWindow(loc.marker,infowindow);
+            populateInfoWindow(loc.marker,loc.infowindow);
           });
 
 
@@ -127,7 +127,7 @@ marker.addListener('click', function() {
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + location.title + '</div>');
+          infowindow.setContent(contentString);
           infowindow.open(map, marker);
           // Make sure the marker property is cleared if the infowindow is closed.
          infowindow.addListener('closeclick',function(){
