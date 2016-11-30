@@ -9,15 +9,15 @@ Neighbour Map Project
 <body>
 <div class="panel">
 <button class="hamburger">&#9776;</button>
-<span class="text"> coffee</span>
+<span class="text"> coffee shops</span>
 </div>
 <div id="container">
 <div id="menu">
 
  <input id="sinput" class="controls" placeholder="Search…" type="search" data-bind="textInput: query, valueUpdate: 'keyup'" > 
-<div id="listbx">
-    <ul data-bind="foreach: search()">
-    <li data-bind="text: title"></li>
+<div>
+    <ul id="list" data-bind="foreach: search()">
+    <li data-bind="text: title, click:$parent.placelist"></li>
     </ul>	
 </div>
 </div>
@@ -32,10 +32,7 @@ Neighbour Map Project
 <script src="script/app.js"></script>
 <script src="script/jquery-3.1.1.min.js"></script>
 <script src="script/toggle.js"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFa2SaR0YmpwKP3m49Obk2tTERKeRK2Wg&callback=initMap"></script>
-
-
-
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFa2SaR0YmpwKP3m49Obk2tTERKeRK2Wg&callback=initMap"onerror="GError()""></script>
 
 </body>
 </html>

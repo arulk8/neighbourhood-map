@@ -103,6 +103,10 @@ var viewModel = function () {
                    
 
                 });
+            },
+            error: function(data)
+            {
+             window.alert("foursquare content failed to load try again!!!")
             }
         });
     });
@@ -113,7 +117,7 @@ var viewModel = function () {
 
     return ko.utils.arrayFilter(self.places(),function(place){
     var input= place.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
-    console.log(input);
+   // console.log(input);
      if (input)
       { place.marker.setVisible(true);
                 
@@ -126,9 +130,23 @@ var viewModel = function () {
       
     });
   });
-
+self.placelist=function(val)
+{
+ //console.log(val);
+ map.panTo(val.location);
+ val.marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function() {
+            val.marker.setAnimation(null);
+          }, 2000);
+ 
 };
-
+};
+function GError() {
+   
+ $(".text").text("The Content Cannot be Loaded Sorry for Inconvenience");
+        
+        
+}
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
