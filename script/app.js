@@ -56,7 +56,7 @@ var viewModel = function () {
     var CLIENT_ID = 'GFKCMKYBQ0UDTMIDE2HGMK2ENN5KWSPTMTF3XV3JHP1M0YJV';
     var CLIENT_SECRET = '10IJSVJFIDQYP0YAGHACE245UBT5AMWSXFZK3B0VSOX4FBCN';
     var contentString;
-    self.markers = [];
+    
 
     self.Locations = ko.observableArray(initiallocations);
     self.Locations().forEach(function (loc) {
@@ -68,8 +68,7 @@ var viewModel = function () {
         });
         loc.marker =marker; 
          
-        self.markers.push(marker);
-        var url = 'https://api.foursquare.com/v2/venues/' + loc.id + '?client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET + '&v=20161129&m=foursquare'
+       var url = 'https://api.foursquare.com/v2/venues/' + loc.id + '?client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET + '&v=20161129&m=foursquare'
         $.ajax({
             method: 'GET',
             url: url,
@@ -113,8 +112,18 @@ var viewModel = function () {
   self.search=ko.computed(function(){
 
     return ko.utils.arrayFilter(self.places(),function(place){
-    return place.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
-
+    var input= place.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
+    console.log(input);
+     if (input)
+      { place.marker.setVisible(true);
+                
+    
+     } 
+    else {
+       place.marker.setVisible(false); 
+         }
+    return input;
+      
     });
   });
 
