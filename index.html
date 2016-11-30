@@ -13,8 +13,13 @@ Neighbour Map Project
 </div>
 <div id="container">
 <div id="menu">
-	<input id="show-listings" type="button" value="Show Listings">
-    <input id="hide-listings" type="button" value="Hide Listings">
+
+ <input id="sinput" class="controls" placeholder="Search…" type="search" data-bind="textInput: query, valueUpdate: 'keyup'" > 
+<div id="listbx">
+    <ul data-bind="foreach: search()">
+    <li data-bind="text: title"></li>
+    </ul>	
+</div>
 </div>
 
 <div id="map"></div>
