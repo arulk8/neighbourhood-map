@@ -53,9 +53,11 @@ var previousinfowindow;
 var viewModel = function () {
         "use strict";
         var self = this;
+        //the client id and client secret is taken from foursquare app login
         var CLIENT_ID = 'GFKCMKYBQ0UDTMIDE2HGMK2ENN5KWSPTMTF3XV3JHP1M0YJV';
         var CLIENT_SECRET = '10IJSVJFIDQYP0YAGHACE245UBT5AMWSXFZK3B0VSOX4FBCN';
         var contentString;
+        // creating an observable array
         self.Locations = ko.observableArray(initiallocations);
         self.Locations().forEach(function (loc) {
                 var marker = new google.maps.Marker({
@@ -75,11 +77,11 @@ var viewModel = function () {
                                 var name = resp.name;
                                 var url = resp.shortUrl;
                                 var addr;
-                                if (resp.location.address === undefined) {
+                                if (resp.location.address === undefined) {//if data is not found show this msg
                                         addr = "Sorry! The Address is Unavailable";
                                 } else {
                                         addr = resp.location.address;
-                                }
+                                }// merging the seperated image url
                                 var suffix = resp.bestPhoto.suffix;
                                 var prefix = resp.bestPhoto.prefix;
                                 var imgsrc = prefix + '100x150' + suffix;
@@ -100,28 +102,29 @@ var viewModel = function () {
                         loc.infowindow = infowindow;
                 };
                 loc.marker.addListener('click', function () {
-                        if (previousinfowindow !== undefined) {
+                        if (previousinfowindow !== undefined) {// checks if infowindow is currently open
                                 previousinfowindow.close();
                         }
                         previousinfowindow = loc.infowindow;
                         //console.log(previousinfowindow);
                         loc.infowindow.open(map, loc.marker);
                 });
-        });
+        });// To search and filter available list and Marker
         self.places = ko.observableArray(initiallocations);
         self.query = ko.observable('');
-        self.search = ko.computed(function () {
+        //computed observable depends on other observables
+        self.search = ko.computed(function () {//filter results using knockouts utils.arrayFilter
                 return ko.utils.arrayFilter(self.places(), function (place) {
                         var input = place.title.toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
                         // console.log(input);
                         if (input) {
-                                place.marker.setVisible(true);
+                                place.marker.setVisible(true);//setVisible inbuilt property available in google map api
                         } else {
                                 place.marker.setVisible(false);
                         }
                         return input;
                 });
-        });
+        });//To bounce the marker when the list is clicked
         self.placelist = function (val) {
                 //console.log(val);
                 map.panTo(val.location);
@@ -129,13 +132,20 @@ var viewModel = function () {
                 setTimeout(function () {
                         val.marker.setAnimation(null);
                 }, 2000);
+                if (previousinfowindow !== undefined) {
+                                previousinfowindow.close();
+                        }
+                        previousinfowindow = val.infowindow;
+                        //console.log(previousinfowindow);
+                        val.infowindow.open(map, val.marker);
+
         };
 };
 
 function GError() {
         $(".text").text("The Content Cannot be Loaded Sorry for Inconvenience");
 }
-
+// create an instance of map
 function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
                 center: {
