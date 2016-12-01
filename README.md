@@ -44,6 +44,6 @@ Google Map utilizes JavaScript, XML, and Ajax. Google Maps offers an API that al
 * Knockout.js Documentation
 * FourSquare API Documentation
 * Google Maps Api Documentation.
-* Udacity Course on INTRO TO AJA,  JAVASCRIPT DESIGN PATTERNS and GOOGLE MAP API
+* Udacity Course on INTRO TO AJAX,  JAVASCRIPT DESIGN PATTERNS and GOOGLE MAP API
 *  Udacity Forum 
 * Stackoverflow.com
