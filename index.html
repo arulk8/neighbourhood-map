@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>
-Neighbourhood Map Project
-</title>
-<link type="text/css" rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="panel">
-<button class="hamburger">&#9776;</button>
-<span class="text"> coffee shops</span>
-</div>
-<div id="container">
-<div id="menu">
-
- <input id="sinput" class="controls" placeholder="Search…" type="search" data-bind="textInput: query, valueUpdate: 'keyup'" > 
-<div>
-    <ul id="list" data-bind="foreach: search()">
-    <li data-bind="text: title, click:$parent.placelist"></li>
-    </ul>	
-</div>
-</div>
-
-<div id="map"></div>
-</div>
-</body>
-
-
-<script src="script/knockout-3.4.1.js"></script>
-
-<script src="script/app.js"></script>
-<script src="script/jquery-3.1.1.min.js"></script>
-<script src="script/toggle.js"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFa2SaR0YmpwKP3m49Obk2tTERKeRK2Wg&callback=initMap"onerror="GError()""></script>
-
-</body>
+   <head>
+      <title>
+         Neighbourhood Map Project
+      </title>
+      <link type="text/css" rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+      <div class="panel">
+         <button class="hamburger">&#9776;</button>
+         <span class="text"> coffee shops</span>
+      </div>
+      <div id="container">
+         <div id="menu">
+            <input id="sinput" class="controls" placeholder="Search…" type="search" data-bind="textInput: query, valueUpdate: 'keyup'" > 
+            <div>
+               <ul id="list" data-bind="foreach: search()">
+                  <li data-bind="text: title, click:$parent.placelist"></li>
+               </ul>
+            </div>
+         </div>
+         <div id="map"></div>
+      </div>
+   </body>
+   <script src="script/knockout-3.4.1.js"></script>
+   <script src="script/app.js"></script>
+   <script src="script/jquery-3.1.1.min.js"></script>
+   <script src="script/toggle.js"></script>
+   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFa2SaR0YmpwKP3m49Obk2tTERKeRK2Wg&callback=initMap"onerror="GError()""></script>
+   </body>
 </html>

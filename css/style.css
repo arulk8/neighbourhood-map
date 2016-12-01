@@ -1,68 +1,72 @@
 body {
- box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-  
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  #map {
-    height: 100%;
-    width:100%;
-    position:absolute;
-    top:0px;
-    left:0px;
-   }
-   #container {
-    width:100%;
-    height:95%;
-    position: absolute;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-#menu {
-   width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    color: #B7B8B6;
-    background: #324851;
-    border: 1px solid #34675C;
-    z-index: 5;	
-   
-}
-.panel
-{
-	text-align:center;
-	height:5%;
-	background-color: #011A27
-}
-.hamburger{
-	margin-top:0.3em;
-	float:left;
-}
-.text
-{
-	font-size: 24px;
-	color: #fff;
-}
-#menu
-{
-	display:none;
 
+#map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
+
+#container {
+  width: 100%;
+  height: 95%;
+  position: absolute;
+}
+
+#menu {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  color: #B7B8B6;
+  background: #324851;
+  border: 1px solid #34675C;
+  z-index: 5;
+}
+
+.panel {
+  text-align: center;
+  height: 5%;
+  background-color: #011A27
+}
+
+.hamburger {
+  margin-top: 0.3em;
+  float: left;
+}
+
+.text {
+  font-size: 24px;
+  color: #fff;
+}
+
+#menu {
+  display: none;
+}
+
 .controls {
-   padding-top:0.5em;
-   padding-left: 0.5em;
-   margin-top:0.5em;
-   margin-left: 0.5em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
 }
+
 #list {
-	overflow: visible;
-	list-style-type: none;
+  overflow: visible;
+  list-style-type: none;
 }
+
 li:hover {
-	background-color: #4F6457;
-	cursor:pointer;
+  background-color: #4F6457;
+  cursor: pointer;
 }
