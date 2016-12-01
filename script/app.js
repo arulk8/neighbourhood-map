@@ -66,7 +66,7 @@ var viewModel = function () {
                         map: map,
                         animation: google.maps.Animation.Drop
                 });
-                loc.marker = marker;
+                loc.marker = marker;//sending place id and user data to foursquare
                 var url = 'https://api.foursquare.com/v2/venues/' + loc.id + '?client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET + '&v=20161129&m=foursquare';
                 $.ajax({
                         method: 'GET',
